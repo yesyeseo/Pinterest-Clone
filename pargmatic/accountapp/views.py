@@ -38,3 +38,4 @@ class AccountCreateView(CreateView):
     # reverse는 class에서 사용할 수 없다. reverse_lazy를 class에서 사용함.
     # 기능은 별로 차이가 없음
     template_name = 'accountapp/create.html'
+
