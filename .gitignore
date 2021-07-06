@@ -511,3 +511,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+NanumMyeongjo.otf
