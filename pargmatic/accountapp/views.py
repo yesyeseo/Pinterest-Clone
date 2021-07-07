@@ -5,9 +5,11 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, UpdateView, DetailView
+from django.views.generic import CreateView, UpdateView, DetailView, UpdateView
 
+from accountapp.forms import AccountUpdateForm
 from accountapp.models import HelloWorld
+
 
 def hello_world(request):
 
@@ -30,7 +32,6 @@ def hello_world(request):
         return render(request, 'accountapp/hello_world.html', context={'hello_world_list': hello_world_list})
 
 
-
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
@@ -39,7 +40,15 @@ class AccountCreateView(CreateView):
     # 기능은 별로 차이가 없음
     template_name = 'accountapp/create.html'
 
+
 class AccountDetailView(DetailView):
     model = User
     context_object_name = 'target_user'
     template_name = 'accountapp/detail.html'
+
+
+class AccountUpdateView(UpdateView):
+    model = User
+    form_class = AccountUpdateForm
+    success_url = reverse_lazy('accountapp:hello_world')
+    template_name = 'accountapp/update.html'

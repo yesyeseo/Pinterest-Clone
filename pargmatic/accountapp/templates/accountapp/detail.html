@@ -10,6 +10,15 @@
             <h2 style="font-family: 'NanumMyeongjo'">
                 {{ target_user.username }}
             </h2>
+
+            {% if target_user == user %}
+            <a href="{% url 'accountapp:update' pk=user.pk %}">
+                <p>
+                    Chango Info
+                </p>
+            </a>
+            {% endif %}
+
         </div>
     </div>
 
